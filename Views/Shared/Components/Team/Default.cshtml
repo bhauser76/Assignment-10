@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Teams>
+
+<!--Adds a header for the selected team-->
+<h1>@ViewBag.SelectedTeam</h1>
+<br />
+
+
+
+<!--The home button to display all players-->
+<a class="btn btn-block btn-outline-secondary"
+   asp-action="Index" asp-controller="Home" asp-route-teamid="">All Players</a>
+<br />
+
+
+<!--The navigation menu that displays all the teams in the database-->
+@foreach (var x in Model)
+{
+    <a class="btn btn-block @(x.TeamName == ViewBag.SelectedTeam ? "btn-primary": "btn-outline-secondary")"
+       asp-action="Index" asp-controller="Home"
+       asp-route-teamid="@x.TeamId"
+       asp-route-team="@x.TeamName"
+
+       >@x.TeamName</a>
+    <br />
+}
+

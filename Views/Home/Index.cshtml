@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IndexViewModel
+
+
+<!--Displays all the bowlers in the database (displays only bowlers on team if team is selected)-->
+@foreach (var x in Model.Bowlers)
+{
+<div class="card">
+    <h5 class="card-header"></h5>
+    <div class="card-body">
+        <h5 class="card-title">@x.BowlerFirstName @x.BowlerMiddleInit @x.BowlerLastName</h5>
+        <p class="card-text">@x.BowlerAddress</p>
+        <p class="card-text">@x.BowlerCity, @x.BowlerState @x.BowlerZip</p>
+        <p class="card-text">@x.BowlerPhoneNumber</p>
+    </div>
+</div>
+<br />
+}
+
+
+<!--Displays the pagination info for each page. Highledted when selected-->
+<div page-info ="@Model.PageNumberingInfo" page-url-teamname="@Model.TeamName"
+     page-classes-enabled="true"
+     page-class="btn"
+     page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primay"
+     class="btn-group pull-right m-1">
+
+</div>
